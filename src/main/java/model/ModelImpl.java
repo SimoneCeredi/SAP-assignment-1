@@ -1,15 +1,17 @@
 package model;
 
+import view.ModelObserver;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class ModelImpl implements ModelObserverSource{
+public class ModelImpl implements Model{
     private List<ModelObserver> observers;
     private int state;
 
     public ModelImpl(){
         state = 0;
-        observers = new ArrayList<ModelObserver>();
+        observers = new ArrayList<>();
     }
 
     public synchronized void update(){

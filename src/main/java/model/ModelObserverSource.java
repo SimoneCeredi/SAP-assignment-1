@@ -1,5 +1,7 @@
 package model;
 
-public interface ModelObserverSource extends Model{
+import view.ModelObserver;
+
+public interface ModelObserverSource {
     void addObserver(ModelObserver observer);
 }

@@ -1,18 +1,17 @@
 package view;
 
-import model.ModelObserver;
-import model.ModelObserverSource;
+import model.Model;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
-public class ViewImpl implements ModelObserver, View{
-    private ModelObserverSource model;
+public class ViewImpl implements ModelObserver, View {
+    private Model model;
     private MyFrame frame;
 
-    public ViewImpl(ModelObserverSource model) {
+    public ViewImpl(Model model) {
         this.model = model;
         model.addObserver(this);
         frame = new MyFrame(model.getState());
@@ -33,7 +32,7 @@ public class ViewImpl implements ModelObserver, View{
         System.out.println("[View] " + msg);
     }
 
-    class MyFrame extends JFrame  {
+    class MyFrame extends JFrame {
 
         private JTextField state;
 
@@ -50,7 +49,7 @@ public class ViewImpl implements ModelObserver, View{
             panel.add(state);
 
             setLayout(new BorderLayout());
-            add(panel,BorderLayout.NORTH);
+            add(panel, BorderLayout.NORTH);
 
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent ev) {
@@ -64,7 +63,7 @@ public class ViewImpl implements ModelObserver, View{
                 SwingUtilities.invokeLater(() -> {
                     state.setText("" + newState);
                 });
-            } catch (Exception ex){
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }
         }

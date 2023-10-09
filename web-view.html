@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SSE Client</title>
+</head>
+<body>
+<div id="data"></div>
+
+<script>
+  const sseData = document.getElementById('data');
+
+  const wsConnection = new WebSocket('ws://localhost:3000'); // Change the URL as needed
+
+  wsConnection.onmessage = function(event) {
+    console.log(event.data)
+    const message = event.data;
+    sseData.innerHTML = `<p>${message}</p>`;
+  };
+
+  eventSource.onerror = function(event) {
+    console.error('SSE error:', event);
+    eventSource.close();
+  };
+</script>
+</body>
+</html>

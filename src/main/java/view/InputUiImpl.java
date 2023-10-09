@@ -18,7 +18,7 @@ public class InputUiImpl implements UserInputSource, View {
     private MyFrame frame;
 
     public InputUiImpl() {
-        observers = new ArrayList<UserInputObserver>();
+        observers = new ArrayList<>();
         frame = new MyFrame();
     }
 
@@ -37,8 +37,6 @@ public class InputUiImpl implements UserInputSource, View {
     }
 
     class MyFrame extends JFrame implements ActionListener {
-
-        private JTextField state;
 
         public MyFrame() {
             super("My Input UI");
@@ -68,7 +66,7 @@ public class InputUiImpl implements UserInputSource, View {
                 for (UserInputObserver obs : observers) {
                     obs.notifyNewUpdateRequested();
                 }
-            } catch (Exception ex) {
+            } catch (Exception ignored) {
             }
         }
     }
