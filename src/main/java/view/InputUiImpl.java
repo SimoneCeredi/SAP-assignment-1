@@ -55,7 +55,7 @@ public class InputUiImpl implements UserInputSource, View {
 
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent ev) {
-                    System.exit(-1);
+                    System.exit(0);
                 }
             });
         }

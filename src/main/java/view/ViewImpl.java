@@ -53,7 +53,7 @@ public class ViewImpl implements ModelObserver, View {
 
             addWindowListener(new WindowAdapter() {
                 public void windowClosing(WindowEvent ev) {
-                    System.exit(-1);
+                    System.exit(0);
                 }
             });
         }

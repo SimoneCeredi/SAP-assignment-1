@@ -18,6 +18,14 @@ public class WebViewServer extends WebSocketServer implements View, ModelObserve
         this.model.addObserver(this);
     }
 
+    public void stopServer(){
+        try {
+            this.stop();
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     @Override
     public void notifyModelUpdated() {
@@ -27,6 +35,7 @@ public class WebViewServer extends WebSocketServer implements View, ModelObserve
 
     @Override
     public void display() {
+        this.setReuseAddr(true);
         this.start();
     }
 
@@ -39,7 +48,6 @@ public class WebViewServer extends WebSocketServer implements View, ModelObserve
     @Override
     public void onClose(WebSocket conn, int code, String reason, boolean remote) {
         System.out.println(conn + " has disconnected!");
-        conn.close();
     }
 
     @Override

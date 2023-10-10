@@ -24,5 +24,10 @@ public class Main {
         view.display();
         inputUI.display();
         webViewServer.display();
+        Runtime.getRuntime().addShutdownHook(new Thread(()->{
+            System.out.println("Shutting down the WSS");
+            webViewServer.stopServer();
+            System.out.println("WSS stopped");
+        }));
     }
 }
